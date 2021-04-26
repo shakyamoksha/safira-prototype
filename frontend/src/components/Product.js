@@ -8,11 +8,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import {Link} from 'react-router-dom'
+
 import Rating from "./Rating";
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        maxWidth: 350,
     },
 });
 
@@ -20,7 +22,7 @@ function Product({ data }) {
     const classes = useStyles();
 
     const click = () => {
-        console.log('clicked');
+        // console.log('clicked');
     };
 
     return (
@@ -28,17 +30,17 @@ function Product({ data }) {
             <Card className={classes.root}>
 
                 <CardActionArea onClick={click}>
+                    <Link to={`/product/${data._id}`}>
+                        <CardMedia component="img" alt={data.name} height="200" image={data.image} title={data.name}/>
 
-                    <CardMedia component="img" alt={data.name} height="200" image={data.image} title={data.name}/>
+                        <CardContent>
 
-                    <CardContent>
+                            <Rating value={data.rating} text={`${data.numReviews} reviews`} color={'#f8e25'}/>
 
-                        <Rating value={data.rating} text={`${data.numReviews} reviews`} color={'#f8e25'}/>
-
-                        <h4>{data.name}</h4>
-                        <h5>{data.price}MUR</h5>
-                    </CardContent>
-
+                            <h4>{data.name}</h4>
+                            <h5>{data.price}MUR</h5>
+                        </CardContent>
+                    </Link>
                 </CardActionArea>
 
                 {/*<CardActions>*/}
