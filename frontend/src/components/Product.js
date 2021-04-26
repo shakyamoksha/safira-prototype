@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import Rating from "./Rating";
+
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
@@ -16,29 +18,36 @@ const useStyles = makeStyles({
 
 function Product({ data }) {
     const classes = useStyles();
-    console.log(data);
+
+    const click = () => {
+        console.log('clicked');
+    };
+
     return (
         <div className='my-3 p-2'>
+            <Card className={classes.root}>
 
-        <Card className={classes.root}>
+                <CardActionArea onClick={click}>
 
-            <CardActionArea>
+                    <CardMedia component="img" alt={data.name} height="200" image={data.image} title={data.name}/>
 
-                <CardMedia component="img" alt={data.name} height="200" image={data.image} title={data.name}/>
+                    <CardContent>
 
-                <CardContent>
-                    <Typography variant="h6" gutterBottom>
-                        {data.name}
-                    </Typography>
-                </CardContent>
+                        <Rating value={data.rating} text={`${data.numReviews} reviews`} color={'#f8e25'}/>
 
-            </CardActionArea>
+                        <h4>{data.name}</h4>
+                        <h5>{data.price}MUR</h5>
+                    </CardContent>
 
-            <CardActions>
+                </CardActionArea>
 
-            </CardActions>
+                {/*<CardActions>*/}
+                {/*    <Button size="small" color="primary">*/}
+                {/*        Open*/}
+                {/*    </Button>*/}
+                {/*</CardActions>*/}
 
-        </Card>
+            </Card>
         </div>
     );
 }

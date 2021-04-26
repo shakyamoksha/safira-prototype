@@ -6,7 +6,7 @@ import products from "../products";
 function Dashboard() {
     return (
         <div>
-            <h1>Latest Products</h1>
+            <h1 className='p-1'>Latest Products</h1>
 
             <Row>
                 {products.map(data => (
