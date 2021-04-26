@@ -2,6 +2,7 @@ import {Container} from 'react-bootstrap';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Dashboard from './screens/dashboard'
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Header/>
         <main>
             <Container>
-                <h1>Welcome to React</h1>
+                <Dashboard/>
             </Container>
         </main>  
       <Footer/>
