@@ -37,8 +37,8 @@ function Product({ data }) {
 
                             <Rating value={data.rating} text={`${data.numReviews} reviews`} color={'#f8e25'}/>
 
-                            <h4>{data.name}</h4>
-                            <h5>{data.price}MUR</h5>
+                            <h5>{data.name}</h5>
+                            <h4>MUR{data.price}</h4>
                         </CardContent>
                     </Link>
                 </CardActionArea>

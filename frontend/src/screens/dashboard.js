@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Product from '../components/Product.js'
-import products from "../products";
+// import products from "../products";
+import axios from "axios";
 
 function Dashboard() {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        // console.log('useEffect triggered!');
+
+        async function fetchProducts(){
+            const {data} = await axios.get('/api/products/');
+            setProducts(data);
+        }
+
+        fetchProducts();
+    }, []);
+
     return (
         <div>
             <h1 className='p-1'>Latest Products</h1>
@@ -15,6 +30,7 @@ function Dashboard() {
                     </Col>
                 ))}
             </Row>
+
         </div>
     );
 }
