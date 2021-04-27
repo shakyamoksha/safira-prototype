@@ -1,0 +1,7 @@
+pip install djangorestframework
+
+python -m pip install --upgrade pip
+
+myenv\Scripts\activate
+
+python .\manage.py runserver
