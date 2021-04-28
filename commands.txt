@@ -6,4 +6,8 @@ myenv\Scripts\activate
 
 python .\manage.py runserver
 
- python .\manage.py migrate
+python .\manage.py migrate
+
+http://127.0.0.1:8000/admin/login/?next=/admin/
+
+python .\manage.py makemigrations
