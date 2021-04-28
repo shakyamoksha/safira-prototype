@@ -9,7 +9,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {listProductDetails} from "../actions/productActions";
+import Loader from "../components/loader";
+import Message from "../components/message";
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -19,18 +22,14 @@ const useStyles = makeStyles((theme) => ({
 
 function ProductScreen({match}) {
     const classes = useStyles();
-    // const product = products.find(p => p._id === match.params.id);
 
-    const [product, setProduct] = useState([]);
+    const dispatch = useDispatch();
+    const productDetails = useSelector(state => state.productDetails);
+    const {error, loading, product} = productDetails;
 
     useEffect(() => {
-        async function fetchProducts(){
-            const {data} = await axios.get(`/api/product/${match.params.id}`);
-            setProduct(data);
-        }
-
-        fetchProducts();
-    }, []);
+        dispatch(listProductDetails(match.params.id))
+    }, [dispatch, match]);
 
     return (
         <div>
@@ -38,58 +37,64 @@ function ProductScreen({match}) {
                 <Tooltip className='my-2' title="Back"><IconButton aria-label="delete"><ArrowBackIcon /></IconButton></Tooltip>
             </Link>
 
-            <Row>
-                <Col md={6}>
-                    <Image src={product.image} alt={product.name} fluid/>
-                </Col>
+            {loading ? <Loader/> :
+                error ? <Message severity={'error'} children={error}/> :
 
-                <Col md={3}>
-                    <ListGroup variant='flush'>
-                        <ListGroup.Item>
-                            <h3>{product.name}</h3>
-                        </ListGroup.Item>
+                    <Row>
+                        <Col md={6}>
+                            <Image src={product.image} alt={product.name} fluid/>
+                        </Col>
 
-                        <ListGroup.Item>
-                            <Rating value={product.rating} text={`${product.numReviews} reviews`} />
-                        </ListGroup.Item>
+                        <Col md={3}>
+                            <ListGroup variant='flush'>
+                                <ListGroup.Item>
+                                    <h3>{product.name}</h3>
+                                </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            Price: MUR{product.price}
-                        </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+                                </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            Description: {product.description}
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Col>
+                                <ListGroup.Item>
+                                    Price: MUR{product.price}
+                                </ListGroup.Item>
 
-                <Col md={3}>
-                    <ListGroup variant=''>
-                        <ListGroup.Item>
-                            <Row>
-                                <Col>Price:</Col>
-                                <Col>
-                                    <strong>MUR {product.price}</strong>
-                                </Col>
-                            </Row>
-                        </ListGroup.Item>
+                                <ListGroup.Item>
+                                    Description: {product.description}
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Col>
 
-                        <ListGroup.Item>
-                            <Row>
-                                <Col>Status:</Col>
-                                <Col>
-                                    {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
-                                    {/*<strong>In Stock</strong>*/}
-                                </Col>
-                            </Row>
-                        </ListGroup.Item>
+                        <Col md={3}>
+                            <ListGroup variant=''>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Price:</Col>
+                                        <Col>
+                                            <strong>MUR {product.price}</strong>
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            <Button className='btn-block' variant="contained" disabled={!product.countInStock > 0} startIcon={<ShoppingCartIcon />}>Add to Cart</Button>
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Col>
-            </Row>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Status:</Col>
+                                        <Col>
+                                            {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                                            {/*<strong>In Stock</strong>*/}
+                                        </Col>
+                                    </Row>
+                                </ListGroup.Item>
+
+                                <ListGroup.Item>
+                                    <Button className='btn-block' variant="contained" disabled={!product.countInStock > 0} startIcon={<ShoppingCartIcon />}>Add to Cart</Button>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+                    </Row>
+
+            }
+
 
         </div>
     );
