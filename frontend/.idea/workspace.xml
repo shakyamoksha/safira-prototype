@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dfd3a9d2-dfc5-48e4-b3b5-7b6f43324b6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/ProductScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ProductScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/cartConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/cartConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/CartScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/CartScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +36,15 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -65,6 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619611348713</updated>
       <workItem from="1619611367722" duration="5269000" />
+      <workItem from="1619636907697" duration="4006000" />
     </task>
     <servers />
   </component>
