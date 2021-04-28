@@ -13,15 +13,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {listProductDetails} from "../actions/productActions";
 import Loader from "../components/loader";
 import Message from "../components/message";
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const useStyles = makeStyles((theme) => ({
-    button: {
+    formControl: {
         margin: theme.spacing(1),
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
     },
 }));
 
-function ProductScreen({match}) {
+function ProductScreen({match, history}) {
     const classes = useStyles();
+
+    const[qty, setQty] = useState(1);
 
     const dispatch = useDispatch();
     const productDetails = useSelector(state => state.productDetails);
@@ -30,6 +39,11 @@ function ProductScreen({match}) {
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match]);
+
+    const addToCartHandler = () => {
+        console.log('addToCart', match.params.id);
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
 
     return (
         <div>
@@ -86,8 +100,27 @@ function ProductScreen({match}) {
                                     </Row>
                                 </ListGroup.Item>
 
+                                {product.countInStock > 0 && (
+                                    <ListGroup.Item>
+                                        <Row>
+                                            <Col className='py-3'>Quantity:</Col>
+                                            <Col>
+                                                <FormControl fullWidth={false} className={classes.formControl}>
+                                                    {/*<InputLabel id="quantity-select-label">Quantity</InputLabel>*/}
+                                                    <Select labelId="quantity-select-label" id="quantity-select" value={qty} onChange={e => setQty(e.target.value)}>
+                                                        {[...Array(product.countInStock).keys()].map(x =>(
+                                                            <MenuItem key={x+1} value={x+1}>{x+1}</MenuItem>
+                                                        ))}
+                                                    </Select>
+                                                </FormControl>
+                                            </Col>
+                                        </Row>
+
+                                    </ListGroup.Item>
+                                )}
+
                                 <ListGroup.Item>
-                                    <Button className='btn-block' variant="contained" disabled={!product.countInStock > 0} startIcon={<ShoppingCartIcon />}>Add to Cart</Button>
+                                    <Button onClick={addToCartHandler} className='btn-block' variant="contained" disabled={!product.countInStock > 0} startIcon={<ShoppingCartIcon />}>Add to Cart</Button>
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
