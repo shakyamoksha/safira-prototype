@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dfd3a9d2-dfc5-48e4-b3b5-7b6f43324b6b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/cartConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/cartConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/toastr.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/CartScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/CartScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ProductScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ProductScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,22 +35,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NPM ClI Server" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="start" />
@@ -66,11 +56,31 @@
       <option name="presentableId" value="Default" />
       <updated>1619611348713</updated>
       <workItem from="1619611367722" duration="5269000" />
-      <workItem from="1619636907697" duration="4006000" />
+      <workItem from="1619636907697" duration="4182000" />
+      <workItem from="1619705355027" duration="11248000" />
+      <workItem from="1619853433041" duration="416000" />
+      <workItem from="1619854275994" duration="661000" />
+      <workItem from="1623428422888" duration="347000" />
+      <workItem from="1623429422440" duration="463000" />
+      <workItem from="1629128069912" duration="2002000" />
+      <workItem from="1629307889829" duration="578000" />
+      <workItem from="1629518111249" duration="1841000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

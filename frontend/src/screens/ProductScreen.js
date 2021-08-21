@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import {useDispatch, useSelector} from "react-redux";
 import {listProductDetails} from "../actions/productActions";
 import Loader from "../components/loader";
-import Message from "../components/message";
+import Toastr from "../components/toastr";
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -52,7 +52,7 @@ function ProductScreen({match, history}) {
             </Link>
 
             {loading ? <Loader/> :
-                error ? <Message severity={'error'} children={error}/> :
+                error ? <Toastr severity={'error'} children={error}/> :
 
                     <Row>
                         <Col md={6}>

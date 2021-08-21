@@ -17,7 +17,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tooltip from "@material-ui/core/Tooltip";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     abRoot:{
@@ -167,9 +168,17 @@ export default function Header() {
                         aria-label="open drawer">
                         <MenuIcon />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Saf's Prototype
-                    </Typography>
+                    <Link to={`/`}>
+                        <Button size="large">
+                            Safia's Prototype
+                        </Button>
+                    </Link>
+
+                    {/*<Link to={`/`}>*/}
+                    {/*    <Typography className={classes.title} variant="h6" noWrap>*/}
+                    {/*        Saf's Prototype*/}
+                    {/*    </Typography>*/}
+                    {/*</Link>*/}
 
                     <div className={classes.grow} /> {/*spacing*/}
 
