@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addToCart} from "../actions/cartActions";
+import {addToCart, removeFromCart} from "../actions/cartActions";
 import {Col, Image, ListGroup, Row} from "react-bootstrap";
 import Toastr from "../components/toastr";
 import Message from "../components/Message";
@@ -10,6 +10,10 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import {makeStyles} from "@material-ui/core/styles";
 import {InputLabel} from "@material-ui/core";
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -34,6 +38,16 @@ export default  function CartScreen({match, location, history}) {
             dispatch(addToCart(productId, qty))
         }
     }, [dispatch, productId, qty])
+
+    const removeFromCartHandler = (item) => {
+        console.log(item)
+        dispatch(removeFromCart(item))
+    }
+
+    const checkoutHandler = () => {
+        // console.log('checkout handler');
+        history.push('/login?redirect=shipping')
+    }
 
     return (
         <Row>
@@ -68,6 +82,14 @@ export default  function CartScreen({match, location, history}) {
                                             </Select>
                                         </FormControl>
                                     </Col>
+
+                                    <Col md={1}>
+                                        <IconButton aria-label="delete" onClick={() => removeFromCartHandler(item.product)} >
+                                            <DeleteIcon />
+                                        </IconButton>
+
+                                    </Col>
+
                                 </Row>
                             </ListGroup.Item>
                         ))}
@@ -76,6 +98,23 @@ export default  function CartScreen({match, location, history}) {
             </Col>
 
             <Col md={4}>
+                
+                <Card>
+
+                    <ListGroup variant='flush'>
+                        <ListGroup.Item>
+                            <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
+                            MUR{cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                        </ListGroup.Item>
+
+                        <ListGroup.Item>
+                            <Button className='btn-block' onClick={checkoutHandler} variant="contained" disabled={cartItems.length === 0}>Proceed To Checkout</Button>
+                        </ListGroup.Item>
+
+                    </ListGroup>
+
+                </Card>    
+
 
             </Col>
         </Row>
