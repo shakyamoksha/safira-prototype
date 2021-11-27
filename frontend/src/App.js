@@ -6,6 +6,7 @@ import Dashboard from './screens/dashboard';
 import ProductScreen from './screens/ProductScreen';
 
 import {BrowserRouter as Router, Route} from 'react-router-dom'
+import CartScreen from "./screens/CartScreen";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Container>
                 <Route path='/' component={Dashboard} exact/>
                 <Route path='/product/:id' component={ProductScreen}/>
+                <Route path='/cart/:id?' component={CartScreen}/>
             </Container>
         </main>  
       <Footer/>

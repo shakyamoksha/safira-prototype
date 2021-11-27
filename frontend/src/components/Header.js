@@ -15,6 +15,10 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Tooltip from "@material-ui/core/Tooltip";
+import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     abRoot:{
@@ -156,17 +160,25 @@ export default function Header() {
     return (
         <div className={classes.grow}>
             <AppBar position="static" className={classes.abRoot}>
-                <Toolbar>
-                    {/*<IconButton*/}
-                    {/*    edge="start"*/}
-                    {/*    className={classes.menuButton}*/}
-                    {/*    color="inherit"*/}
-                    {/*    aria-label="open drawer">*/}
-                    {/*    <MenuIcon />*/}
-                    {/*</IconButton>*/}
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        Saf's Prototype
-                    </Typography>
+                <Toolbar variant='dense'>
+                    <IconButton
+                        edge="start"
+                        className={classes.menuButton}
+                        color="inherit"
+                        aria-label="open drawer">
+                        <MenuIcon />
+                    </IconButton>
+                    <Link to={`/`}>
+                        <Button size="large">
+                            Safia's Prototype
+                        </Button>
+                    </Link>
+
+                    {/*<Link to={`/`}>*/}
+                    {/*    <Typography className={classes.title} variant="h6" noWrap>*/}
+                    {/*        Saf's Prototype*/}
+                    {/*    </Typography>*/}
+                    {/*</Link>*/}
 
                     <div className={classes.grow} /> {/*spacing*/}
 
@@ -186,16 +198,14 @@ export default function Header() {
                     <div className={classes.grow} /> {/*spacing*/}
 
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                        <Link to={`/cart/`}>
+                            <IconButton aria-label='Cart' color="inherit">
+                                <Tooltip title='Cart'>
+                                    <ShoppingCartIcon/>
+                                </Tooltip>
+                            </IconButton>
+                        </Link>
+
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
@@ -206,6 +216,7 @@ export default function Header() {
                             <AccountCircle />
                         </IconButton>
                     </div>
+
                     <div className={classes.sectionMobile}>
                         <IconButton
                             aria-label="show more"

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Message({severity, children}) {
+export default function Toastr({severity, children}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 

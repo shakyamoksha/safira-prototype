@@ -4,3 +4,33 @@ main{
 .rating span{
     /*margin: 0.1rem;*/
 }
+
+/* For Scroll Bar across web pages*/
+::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 0.5rem;
+    border: 0.2rem solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+h1 {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+}
+
+h2 {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+}
